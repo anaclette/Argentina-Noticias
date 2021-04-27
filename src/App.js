@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Card from './components/UpdateCard';
+// import Logo from './components/Logo'
+import './components/assets/Logo.scss';
+import LogoImg from './components/assets/Argentina_Logo.png';
 import './App.css';
+import './components/UpdateCard.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+	const [ news, setNews ] = useState([]);
+
+	useEffect(() => {
+		fetch(`https://newsapi.org/v2/top-headlines?country=ar&apiKey=f7bf0c1fb67a4ba7bee83979f5c511b3`)
+			.then((res) => res.json())
+			.then((data) => {
+				setNews(data.articles);
+			});
+	}, []);
+
+	return (
+		<>
+		{/* <Logo  /> */}
+		<div className="Logo">
+ 			<img src={LogoImg} alt="Logo" />
+ 		</div>
+		<div className="App">
+			{news.map((update) => <Card update={update} key={update.title} />)}
+		</div>
+		</>
+	);
+};
 
 export default App;
