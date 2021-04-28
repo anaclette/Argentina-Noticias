@@ -1,0 +1,30 @@
+.Header {
+	display: flex;
+	justify-content: space-between;
+	form {
+		display: flex;
+		margin: 50px;
+		align-items: center;
+		flex-wrap: wrap;
+		@media (min-width: 900px) and (max-width: 1200px) {
+			margin: 25px;
+		}
+		@media (max-width: 900px) {
+			flex-direction: column;
+			margin: 25px;
+		}
+		input {
+			height: 30px;
+			margin: 20px;
+			width: 400px;
+			@media (max-width: 600px) {
+				width: 250px;
+			}
+		}
+		button {
+			height: 35px;
+			width: 80px;
+			font-size: 15px;
+		}
+	}
+}
