@@ -11,7 +11,7 @@ import './components/SearchInput.scss';
 const App = () => {
 	const [ news, setNews ] = useState([]);
 	const [ value, setValue ] = useState('');
-	const [ search, setSearch ] = useState(0);
+	const [ search, setSearch ] = useState('');
 
 	useEffect(
 		() => {
@@ -29,7 +29,7 @@ apiKey=f7bf0c1fb67a4ba7bee83979f5c511b3`)
 		setValue(e.target.value);
 	};
 	const handleClick = () => {
-		setSearch(search + 1);
+		setSearch(value);
 	};
 
 	return (
